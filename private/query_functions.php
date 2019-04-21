@@ -11,8 +11,8 @@
         global $db;
     
         $sql = "SELECT * FROM topics ";
-        $sql .= "WHERE id='" . db_escape($db, $id) . "'";
-        // echo $sql;
+        $sql .= "WHERE topic_id='" . db_escape($db, $id) . "'";
+        //echo $sql;
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         $topic = mysqli_fetch_assoc($result);
