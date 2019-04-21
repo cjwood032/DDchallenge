@@ -1,12 +1,10 @@
 <?php require_once('../../private/initialize.php'); ?>
 
 <?php
-  $topics = [
-    ['id' => '1', 'user_id' => '1', 'title' => 'Title1', 'post_body' => 'Body', 'created_date'=>'04/18/2019', 'updated_date'=> '04/19/2019'],
-    ['id' => '2', 'user_id' => '2', 'title' => 'Title2', 'post_body' => 'Body', 'created_date'=>'04/18/2019', 'updated_date'=> '04/19/2019'],
-    ['id' => '3', 'user_id' => '3', 'title' => 'Title3', 'post_body' => 'Body', 'created_date'=>'04/18/2019', 'updated_date'=> '04/19/2019'],
-    ['id' => '4', 'user_id' => '4', 'title' => 'Title4', 'post_body' => 'Body', 'created_date'=>'04/18/2019', 'updated_date'=> '04/19/2019'],
-  ];
+    $sql= "SELECT * FROM topics ";
+    $sql .= "ORDER BY updated_date DSC";
+    $topic_set = find_all_topics();
+
 ?>
 <?php $page_title = 'Topics Menu'; ?>
 <?php include(SHARED_PATH . '/topics_header.php'); ?>
@@ -28,26 +26,27 @@
   	        <th>Title</th>
             <th>Body</th>
             <th>Created</th>
-            <th>updated</th>
+            <th>Updated</th>
   	        <th>&nbsp;</th>
   	        <th>&nbsp;</th>
             <th>&nbsp;</th>
   	      </tr>
 
-          <?php foreach($topics as $topic) { ?>
+          <?php while($topic = mysqli_fetch_assoc($topic_set)) { ?>
             <tr>
-              <td><?php echo $topic['id']; ?></td>
+              <td><?php echo $topic['topic_id']; ?></td>
               <td><?php echo $topic['user_id']; ?></td>
         	  <td><?php echo $topic['title']; ?></td>
               <td><?php echo $topic['post_body']; ?></td>
-              <td><?php echo $topic['created_date']; ?></td>
-              <td><?php echo $topic['updated_date']; ?></td>
-              <td><a class="action" href="<?php echo url_for('/topics/show.php?id=' . $topic['id']); ?>">View</a></td>
-              <td><a class="action" href="<?php echo url_for('/topics/edit.php?id=' . $topic['id']); ?>">Edit</a></td>
+              <td><?php echo $topic['created_at']; ?></td>
+              <td><?php echo $topic['updated_at']; ?></td>
+              <td><a class="action" href="<?php echo url_for('/topics/show.php?id=' . $topic['topic_id']); ?>">View</a></td>
+              <td><a class="action" href="<?php echo url_for('/topics/edit.php?id=' . $topic['topic_id']); ?>">Edit</a></td>
               <td><a class="action" href="">Delete</a></td>
         	  </tr>
           <?php } ?>
   	    </table>
+          <?php mysqli_free_result($topic_set);?> <!-- Warning boolean given in chapter 6-retrieve data-->
     </div>
 
 <?php include(SHARED_PATH . '/topics_footer.php'); ?>
