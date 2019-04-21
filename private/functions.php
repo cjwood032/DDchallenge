@@ -9,15 +9,15 @@ function url_for($script_path) {
 }
 
 function u($string="") {
-  return urlencode($string);
+  return urlencode($string); //use to encode strings/links
 }
 
 function raw_u($string="") {
-  return rawurlencode($string);
+  return rawurlencode($string); //use to encode strings/links
 }
 
 function h($string="") {
-  return htmlspecialchars($string);
+  return htmlspecialchars($string); //encode for HTML
 }
 
 function error_404() {

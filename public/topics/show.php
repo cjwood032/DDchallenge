@@ -1,7 +1,10 @@
 <?php require_once('../../private/initialize.php'); ?>
 
-<?php include('../../private/shared/topics_header.php'); ?>
-
+<?php include(SHARED_PATH . '/topics_header.php'); ?>
+<?php 
+  $id = $_GET['id'] ?? '1';
+  echo h($id); 
+?>
     <div id="content">
       Title:
       Post:
@@ -11,4 +14,4 @@
       updated date:
     </div>
 
-<?php include('../../private/shared/topics_footer.php'); ?>
+    <?php include(SHARED_PATH . '/topics_footer.php'); ?>
