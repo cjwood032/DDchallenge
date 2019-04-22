@@ -47,5 +47,30 @@
           exit;
         }
       }
-
+      function update_topic($topic) {
+        global $db;
+    
+       // $errors = validate_topic($topic);
+       // if(!empty($errors)) {
+       //   return $errors;
+       // }
+    
+        $sql = "UPDATE topics SET ";
+        $sql .= "title='" . db_escape($db, $topic['title']) . "', ";
+        $sql .= "post_body='" . db_escape($db, $topic['post_body']) . "', ";
+        $sql .= "updated_at='" . db_escape($db, $topic['updated_at']) . "' ";
+        $sql .= "WHERE topic_id='" . db_escape($db, $topic['topic_id']) . "' ";
+        $sql .= "LIMIT 1";
+        $result = mysqli_query($db, $sql);
+        // For UPDATE statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // UPDATE failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+    
+      }
 ?>
