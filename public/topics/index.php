@@ -42,7 +42,7 @@
               <td><?php echo $topic['updated_at']; ?></td>
               <td><a class="action" href="<?php echo url_for('/topics/show.php?id=' . $topic['topic_id']); ?>">View</a></td>
               <td><a class="action" href="<?php echo url_for('/topics/edit.php?id=' . $topic['topic_id']); ?>">Edit</a></td>
-              <td><a class="action" href="">Delete</a></td>
+              <td><a class="action" href="<?php echo url_for('/topics/delete.php?id=' . h(u($topic['topic_id']))); ?>">Delete</a></td>
         	  </tr>
           <?php } ?>
   	    </table>
