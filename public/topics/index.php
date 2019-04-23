@@ -1,11 +1,5 @@
 <?php require_once('../../private/initialize.php'); ?>
-
-<?php
-    $sql= "SELECT * FROM topics ";
-    $sql .= "ORDER BY updated_date DSC";
-    $topic_set = find_all_topics();
-
-?>
+<?php $topic_set = find_all_topics();?>
 <?php $page_title = 'Topics Menu'; ?>
 <?php include(SHARED_PATH . '/topics_header.php'); ?>
 

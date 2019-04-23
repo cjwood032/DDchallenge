@@ -1,4 +1,23 @@
 <?php
+    //*******users******
+    function find_all_users() {
+        global $db;
+        $sql= "SELECT * FROM users ";
+        $result = mysqli_query($db, $sql);
+        return $result;
+    }
+    function find_user_by_id($id) {
+        global $db;
+    
+        $sql = "SELECT * FROM userss ";
+        $sql .= "WHERE user_id='" . db_escape($db, $id) . "'";
+        //echo $sql;
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $user; // returns an assoc. array
+    }
     //topics
     function find_all_topics() {
         global $db;
@@ -7,6 +26,7 @@
         $result = mysqli_query($db, $sql);
         return $result;
     }
+
     function find_topic_by_id($id) {
         global $db;
     
