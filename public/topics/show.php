@@ -3,13 +3,14 @@
 <?php 
   $id = $_GET['id'] ?? '1';
   $topic = find_topic_by_id($id);
+  # $watchers= get_watchers($id);
 ?>
   <div id="content">
     Title: <b><?php echo $topic['title']; ?></b> Watchers: --<br/>
     Post:<?php echo h($topic['post_body']); ?>
   
     <div id = "replies">
-      <button>Add reply</button>
+      <button >Add reply</button>
     
     </div>
   </div>

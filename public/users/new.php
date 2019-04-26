@@ -7,7 +7,7 @@
       //  $user['user_id'] = $_POST['user_id'] ?? '';
         $user['username'] = $_POST['username'] ?? '';
         $user['email'] = $_POST['email'] ?? '';
-        $user['created_at'] = $_POST['created_at'];
+        $user['password'] = $_POST['password'] ?? '';
 
         $result = insert_user($user);
         if($result === true) {
@@ -23,6 +23,7 @@
        // $user['user_id'] = '';
         $user['username'] = '';
         $user['email'] = '';
+        $user['passsword'] = '';
 
       
       }
@@ -38,8 +39,9 @@
 <form action="<?php echo url_for('/users/new.php'); ?>" method="post">
     
     Username:<input type="text" name="username" value ="" />
-    <input type = "date" name="created_at" hidden="true" value="<?php echo date('Y-m-d')?>"/>
-    Email:<input type="text" name="email" value ="" rows="10" cols="30">
+    Email:<input type="text" name="email" value ="">
+    Password:<input type="text" name="password" value ="">
+
     <input type="submit" value="Create user" />
     
 </form>

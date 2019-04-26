@@ -1,5 +1,26 @@
 <?php
     //*******users******
+    function insert_user($user) {
+        global $db;
+    
+        $sql = "INSERT INTO users ";
+        $sql .= "(username, email, password) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . db_escape($db, $user['username']) . "',";
+        $sql .= "'" . db_escape($db, $user['email']) . "',";
+        $sql .= "'" . db_escape($db, $user['password']) . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        // For INSERT statements, $result is true/false
+        if($result) {
+            return true;
+        } else {
+          // INSERT failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }
     function find_all_users() {
         global $db;
         $sql= "SELECT * FROM users ";
@@ -9,7 +30,7 @@
     function find_user_by_id($id) {
         global $db;
     
-        $sql = "SELECT * FROM userss ";
+        $sql = "SELECT * FROM users ";
         $sql .= "WHERE user_id='" . db_escape($db, $id) . "'";
         //echo $sql;
         $result = mysqli_query($db, $sql);
