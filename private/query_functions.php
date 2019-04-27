@@ -21,6 +21,16 @@
           exit;
         }
       }
+    function user_logon($username) {
+        global $db;
+        $sql = "SELECT * FROM users ";
+        $sql .= "WHERE username= '" . db_escape($db, $username) . "'";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        return $user['user_id'];
+    } 
     function find_all_users() {
         global $db;
         $sql= "SELECT * FROM users ";

@@ -6,8 +6,8 @@
   $user = find_user_by_id($id);
 ?>
     <div id="content">
-      Username:<b><?php echo $user['username']; ?></b><br/>
-      Email:<?php echo h($user['email']); ?>
+      Username: <b><?php echo $user['username']; ?></b><br/>
+      Email: <?php echo h($user['email']); ?>
     </div>
 
     <?php include(SHARED_PATH . '/topics_footer.php'); ?>

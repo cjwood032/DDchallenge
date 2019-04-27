@@ -18,7 +18,10 @@
 
     <navigation>
         <ul>
+          <li>User: <?php echo $_SESSION['username'] ?? ''; ?></li>
           <li><a href ="<?php echo url_for("/topics/index.php"); ?>">Menu</a></li>
+          <li><a href="<?php echo url_for('/users/logout.php'); ?>">Logout</a></li>
         </ul>
     </navigation>
+    
     
