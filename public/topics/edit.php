@@ -9,7 +9,7 @@
 
         
         $topic=[];
-        $topic['topic_id'] = $id; //id doesn't seem to be working
+        $topic['topic_id'] = $id;
         $topic['title'] = $_POST['title'] ?? '';
         $topic['post_body'] = $_POST['post_body'] ?? '';
         $topic['updated_at'] = $_POST['updated_at'] ?? '';
