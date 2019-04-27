@@ -24,7 +24,7 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/users_header.php'); ?>
 
 <div id="content">
-  <h1>Log in</h1>
+  <h2>Log in or <a href ="<?php echo url_for("/users/new.php"); ?>" >Sign up</a></h2>
 
   <?php echo display_errors($errors); ?>
 

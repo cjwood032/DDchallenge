@@ -18,8 +18,8 @@
 
     <navigation>
         <ul>
-          <li>User: <?php echo $_SESSION['username'] ?? ''; ?></li>
-          <li><a href ="<?php echo url_for("/topics/index.php"); ?>">Menu</a></li>
+          <li>User:<a href ="<?php echo url_for("/users/show.php?id=". $_SESSION['user_id']); ?>">  <?php echo $_SESSION['username'] ?? ''; ?></a></li>
+          <li><a href ="<?php echo url_for("/topics/index.php"); ?>">Topics List</a></li>
           <li><a href="<?php echo url_for('/users/logout.php'); ?>">Logout</a></li>
         </ul>
     </navigation>

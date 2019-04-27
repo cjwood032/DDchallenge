@@ -17,8 +17,8 @@
             <th>ID</th>
             <th>User</th>
             
-  	        <th>Title</th>
-            <th>Body</th>
+  	        <th><center>Title</center></th>
+            <th><center>Body</center></th>
             <th>Created</th>
             <th>Updated</th>
   	        <th>&nbsp;</th>

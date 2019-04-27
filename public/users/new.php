@@ -11,8 +11,7 @@
 
         $result = insert_user($user);
         if($result === true) {
-          $new_id = mysqli_insert_id($db);
-          redirect_to(url_for('/users/show.php?id=' . $new_id));
+          redirect_to(url_for('/users/login.php'));
         } else {
           $errors = $result;
         }
@@ -27,12 +26,6 @@
 
       
       }
-      
-      $user_set = find_all_users();
-      $user_count = mysqli_num_rows($user_set) + 1;
-      mysqli_free_result($user_set);
-      
-
 ?>
 <?php $page_username = 'New User'; ?>
 <?php include(SHARED_PATH . '/users_header.php'); ?>

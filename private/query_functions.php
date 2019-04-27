@@ -49,6 +49,24 @@
         mysqli_free_result($result);
         return $user; // returns an assoc. array
     }
+    function update_user($user) {
+        global $db;
+        $sql = "UPDATE users SET ";
+        $sql .= "username='" . db_escape($db, $user['username']) . "', ";
+        $sql .= "email='" . db_escape($db, $user['email']) . "' ";
+        $sql .= "WHERE user_id='" . db_escape($db, $user['user_id']) . "' ";
+        $sql .= "LIMIT 1";
+        $result = mysqli_query($db, $sql);
+        // For UPDATE statements, $result is true/false
+        if($result) {
+          return true;
+        } else {
+          // UPDATE failed
+          echo mysqli_error($db);
+          db_disconnect($db);
+          exit;
+        }
+      }// end of update
     function add_watcher($id) {
         global $db;
         
