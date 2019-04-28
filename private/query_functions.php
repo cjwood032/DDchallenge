@@ -71,11 +71,12 @@
         global $db;
         
         $sql = "INSERT INTO watchers ";
-        $sql .= "(user_id, topic_id, post_body, created_at, updated_at) ";
+        $sql .= "(user_id, topic_id) ";
         $sql .= "VALUES (";
         $sql .= "'" . db_escape($db, $_SESSION['user_id']) . "',";
         $sql .= "'" . db_escape($db, $id) . "'";
         $sql .= ")";
+        echo $sql;
         $result = mysqli_query($db, $sql);
         // For INSERT statements, $result is true/false
         if($result) {
@@ -189,6 +190,7 @@
     
         // For DELETE statements, $result is true/false
         if($result) {
+            delete_related($id);
           return true;
         } else {
           // DELETE failed
@@ -276,4 +278,14 @@
           exit;
         }
       }
+    function delete_related($id) {
+        global $db;
+    
+        $sql = "DELETE FROM replies ";
+        $sql .= "WHERE topic_id='" . db_escape($db, $id) . "' ";
+        mysqli_query($db, $sql);
+        $sql = "DELETE FROM watchers ";
+        $sql .= "WHERE topic_id='" . db_escape($db, $id) . "' ";
+        mysqli_query($db, $sql);
+    }
 ?>

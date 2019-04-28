@@ -5,8 +5,7 @@
 
     <div id="content">
         <div id="main-menu">
-            <h3>Main Menu</h3>
-            <ul><li><a href="<?php echo url_for('/topics/replies/index.php');?>">Replies</a></li></ul>
+            <h3>List of topics</h3>
         </div>
         <div class="actions">
           <a class="action" href="<?php echo url_for('/topics/new.php'); ?>">Create New Topic</a>
