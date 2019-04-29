@@ -21,6 +21,21 @@
           exit;
         }
       }
+      function verify_user($username, $password) {
+        global $db;
+        $sql = "SELECT * FROM users ";
+        $sql .= "WHERE username= '" . db_escape($db, $username) . "' ";
+        $sql .= "AND password= '" . db_escape($db, $password) . "'";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        if ($user['password']===$password){
+            return true;
+        } else{
+            return false;
+        }
+      }
     function user_logon($username) {
         global $db;
         $sql = "SELECT * FROM users ";
@@ -278,6 +293,7 @@
           exit;
         }
       }
+    
     function delete_related($id) {
         global $db;
     
@@ -298,10 +314,11 @@
       $message="Someone replied with " . $reply['reply_body'];
       foreach($watchers as $watcher){
         $user=find_user_by_id($watcher["user_id"]);
-        echo $user['email'];
         $headers .= ", " . $user['email'];
       }
       //mail($to,$subject,$message,$headers) <-this will fail since we have no mail server
-      echo  $headers .  " have been emailed the following " . $message;
+      echo  "Subject: " . $subject . "<br/>";
+      echo  "Headers: ". $headers . "<br/>"; 
+      echo  "The email message: " . $message;
   }
 ?>

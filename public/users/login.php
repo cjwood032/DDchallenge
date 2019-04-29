@@ -6,16 +6,20 @@ $username = '';
 $password = '';
 
 if(is_post_request()) {
-
   $username = $_POST['username'] ?? '';
   $password = $_POST['password'] ?? '';
-
-  
-  $_SESSION['user_id'] = user_logon($username);
-  $_SESSION['username'] = $username;
-
-
-  redirect_to(url_for('/topics/index.php'));
+  if ($username !='' && $password !=''){
+    $result=verify_user($username, $password);
+    if($result===true){
+      $_SESSION['user_id'] = user_logon($username);
+      $_SESSION['username'] = $username;
+      redirect_to(url_for('/topics/index.php'));
+    } else {
+      echo "user verification failed.";
+    }
+  } else{
+    echo "please enter both Username and Password";
+  }
 }
 
 ?>

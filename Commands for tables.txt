@@ -1,3 +1,7 @@
+CREATE DATABASE [IF NOT EXISTS] delta_defense;
+
+
+
 CREATE TABLE users (
 user_id INT(11) NOT NULL AUTO_INCREMENT,
 username VARCHAR(20),
@@ -29,3 +33,7 @@ CREATE TABLE watchers (
 user_id INT(11),
 topic_id INT(11)
 );
+
+CREATE USER 'deltademo'@'localhost' IDENTIFIED BY 'homesecurity';
+
+GRANT ALL PRIVILEGES ON 'delta_defense' . * TO 'deltademo'@'localhost';
