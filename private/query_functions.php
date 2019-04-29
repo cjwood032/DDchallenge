@@ -288,4 +288,20 @@
         $sql .= "WHERE topic_id='" . db_escape($db, $id) . "' ";
         mysqli_query($db, $sql);
     }
+    function email_watchers($reply){
+      $watchers = get_watchers($reply['topic_id']);
+      $headers = "From: no-reply@fakesite.com\r\n Bcc: tracker@fakesite.com";
+      $to= "noreply@fakesite.com";
+     
+      $topic=find_topic_by_id($reply['topic_id']);
+      $subject="Topic " . $topic['title'] . " recieved a reply!";
+      $message="Someone replied with " . $reply['reply_body'];
+      foreach($watchers as $watcher){
+        $user=find_user_by_id($watcher["user_id"]);
+        echo $user['email'];
+        $headers .= ", " . $user['email'];
+      }
+      //mail($to,$subject,$message,$headers) <-this will fail since we have no mail server
+      echo  $headers .  " have been emailed the following " . $message;
+  }
 ?>
