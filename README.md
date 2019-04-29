@@ -1,5 +1,5 @@
 # DDchallenge
-
+Walkthrough of the app: https://youtu.be/97Wywwoo-T8
 Installation
 1. Download or clone the git repository to where you host PHP files
 2. You need to set up the database in order to continue, see "setting up the database"

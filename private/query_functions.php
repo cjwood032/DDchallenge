@@ -317,8 +317,9 @@
         $headers .= ", " . $user['email'];
       }
       //mail($to,$subject,$message,$headers) <-this will fail since we have no mail server
-      echo  "Subject: " . $subject . "<br/>";
-      echo  "Headers: ". $headers . "<br/>"; 
-      echo  "The email message: " . $message;
+      // To see what the email would be(like in the demo) uncomment the following 3 lines
+      //echo  "Subject: " . $subject . "<br/>";
+      //echo  "Headers: ". $headers . "<br/>"; 
+      //echo  "The email message: " . $message;
   }
 ?>

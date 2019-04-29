@@ -15,7 +15,7 @@
     if($result === true) {
       email_watchers($reply);
       
-      //redirect_to(url_for('/topics/show.php?id=' . $topic_id));
+      redirect_to(url_for('/topics/show.php?id=' . $topic_id));
     } else {
       $errors = $result;
     }
